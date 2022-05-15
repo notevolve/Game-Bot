@@ -1,8 +1,11 @@
 const db = require('aa-sqlite');
 
 
+// Load the idols into map and return the map with getIdols method
+// Each map key is the id number of that idol from the database file
+// Each map value is an instance of the idol class filled with information from the database
+
 async function loadIdols(gender, gameSize) {
-    
     try {
         await db.open('./resources/idols.db');
         const rows = await db.all("SELECT id, stagename, groupname FROM idols WHERE gender=$gender ORDER BY RANDOM() LIMIT $gameSize", {$gender:gender, $gameSize:gameSize});
@@ -12,7 +15,6 @@ async function loadIdols(gender, gameSize) {
         return console.error(error);
     }
 }
-
 
 async function getIdols(gender, gameSize) {
     const idols = new Map();

@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageAttachment } = require('discord.js');
 const getIdols  = require('../idolsDB.js');
-
+// Slash command version of the versus game
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('vs')
