@@ -1,0 +1,20 @@
+{
+  "name": "gamebot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "evolve",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.13.0",
+    "@discordjs/rest": "^0.4.1",
+    "aa-sqlite": "^1.0.29",
+    "discord-api-types": "^0.32.1",
+    "discord.js": "^13.6.0",
+    "sqlite3": "^5.0.8"
+  }
+}
