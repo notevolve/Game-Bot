@@ -1,8 +1,10 @@
 const fs = require('node:fs');
 const { Client, Collection, Intents } = require('discord.js');
-const { token } = require('./config.json');
+const config = require('./config.json');
+
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES], partials: ['MESSAGE'] });
+client.config = config;
 
 // Command Handlers
 client.commands = new Collection();
@@ -12,7 +14,7 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	// Sets new item in collection
 	// With the key as the command name and value as exported module
-	client.commands.set(command.data.name, command);
+	client.commands.set(command.name, command);
 }
 
 // Event Handlers
@@ -27,4 +29,4 @@ for (const file of eventFiles) {
     }
 }
 
-client.login(token);
+client.login(config.token);
