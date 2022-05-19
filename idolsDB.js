@@ -4,6 +4,9 @@ const db = require('aa-sqlite');
 // Each map key is the id number of that idol from the database file
 // Each map value is an instance of the idol class filled with information from the database
 
+// @TODO:
+//  1. Consider changing the data structure that idols are stored into
+
 async function loadIdols(gender, gameSize) {
     let query = "SELECT id, stagename, groupname FROM idols ORDER BY RANDOM() LIMIT $gameSize"
     let params = {$gameSize: gameSize};
