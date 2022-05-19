@@ -1,56 +1,40 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageAttachment } = require('discord.js');
-const getIdols  = require('../idolsDB.js');
+const startGame = require('../games/versus.js');
 
-// Slash command version of the versus game
+//@TODO:
+//  1. Refactor
+
 module.exports = {
     name: "vs",
     async execute(client, message, args) {
-        let gender = 'any';
-        let gameSize = 32;
-        const argSize = args.length;
 
+        const game = {
+            server: client.guilds.cache.get(message.guild.id),
+            channel: client.channels.cache.get(message.channel.id),
+            author: message.author,
+            client: client,
+            gender: 'any',
+            size: 32,
+        }
+
+        const argSize = args.length;
+        
         if(argSize === 1) {
             if(validType(args[0])) {
-                gender = setType(args[0]);
+                game.gender = setType(args[0]);
             } else if (validSize(args[0], message)) {
-                gameSize = args[0];
+                game.size = args[0];
             }
         } 
         else if (argSize === 2) {
             if(validType(args[0])) {
-                gender = setType(args[0]);
+                game.gender = setType(args[0]);
             } 
             if (validSize(args[1],message)) {
-                gameSize = args[1];
+                game.size = args[1];
             }
         }
 
-        
-        console.log(`type: ${gender}, size: ${gameSize}`)
-        
-        let idols = await getIdols(gender, gameSize);
-        // console.log(idols);
-        let text = "";
-        let num = 0;
-        idols.forEach((value, key) => {
-            // console.log(text);
-            num++;
-            text += value.getName() + ", "
-            if(num % 10 == 0) {
-                text += "\n"
-            }
-        })
-
-        message.reply(`${text}`);
-
-        
-    // let idols = await getIdols(gender, gameSize);
-    // const attachment = new MessageAttachment('./resources/images/placeholder.png');
-
-    // interaction.reply(`${gender} game\nidol1 vs idol2`);
-    // interaction.channel.send({ files: [attachment] });
-
+        await startGame(game);
     },
 };
 
