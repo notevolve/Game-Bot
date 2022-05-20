@@ -3,3 +3,5 @@ node_modules
 config.json
 resources
 commands/old slash commands
+.eslintignore
+package-lock.json
