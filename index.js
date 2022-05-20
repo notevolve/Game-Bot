@@ -1,6 +1,3 @@
-/* eslint-disable global-require */
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable no-restricted-syntax */
 const fs = require('node:fs');
 const { Client, Collection, Intents } = require('discord.js');
 const config = require('./config.json');

@@ -1,6 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-plusplus */
 const { MessageAttachment, MessageActionRow, MessageButton } = require('discord.js');
 const getIdols = require('../idolsDB');
 
@@ -15,6 +12,7 @@ async function startGame(game) {
   game.idols = await getIdols(game.gender, game.size);
 
   showInfo(game);
+  run();
 
   const attachment = new MessageAttachment('./resources/images/placeholder.png');
   game.channel.send({ content: `type: ${game.gender}, size: ${game.size}`, components: [buttons], files: [attachment] });
@@ -22,8 +20,9 @@ async function startGame(game) {
   // await run();
 }
 
-// async function run() {
-// }
+async function run() {
+
+}
 
 // format this properly later (or not no one will ever see it)
 function showInfo(game) {

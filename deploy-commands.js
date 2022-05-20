@@ -1,8 +1,3 @@
-/* eslint-disable global-require */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable max-len */
-/* eslint-disable no-console */
 const fs = require('node:fs');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');

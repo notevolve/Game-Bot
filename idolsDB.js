@@ -1,5 +1,3 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable eqeqeq */
 const db = require('aa-sqlite');
 
 // Load the idols into map and return the map with getIdols method

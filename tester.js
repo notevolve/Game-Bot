@@ -1,6 +1,8 @@
-const getIdols = require('../idolsDB');
-
+const getIdols = require('./idolsDB');
 
 async function main() {
-    const idols = await getIdols('F', 32);
+  const idols = await getIdols('F', 32);
+  console.log(idols);
 }
+
+main();
