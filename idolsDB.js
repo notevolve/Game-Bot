@@ -23,20 +23,21 @@ async function loadIdols(gender, gameSize) {
 }
 
 async function getIdols(gender, gameSize) {
-  const idols = new Map();
+  const idols = [];
   const rows = await loadIdols(gender, gameSize);
 
   await rows.forEach((row) => {
-    idols.set(row.id, new Idol(row.stagename, row.groupname));
+    idols.push(new Idol(row.stagename, row.groupname, row.id));
   });
 
   return idols;
 }
 
 class Idol {
-  constructor(name, group) {
+  constructor(name, group, id) {
     this.name = name;
     this.group = group;
+    this.id = id;
   }
 
   getId() {

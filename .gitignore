@@ -5,3 +5,4 @@ resources
 commands/old slash commands
 .eslintignore
 package-lock.json
+tester.js

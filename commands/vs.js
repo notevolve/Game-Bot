@@ -1,22 +1,12 @@
-const startGame = require('../games/versus');
-
-// @TODO:
-//  1. Refactor
+const { startGame, Game } = require('../games/versus');
 
 module.exports = {
   name: 'vs',
   async execute(client, message, args) {
-    const game = {
-      server: client.guilds.cache.get(message.guild.id),
-      channel: client.channels.cache.get(message.channel.id),
-      author: message.author,
-      client,
-      gender: 'any',
-      size: 32,
-    };
+    const game = new Game(client.guilds.cache.get(message.guild.id), client.channels.cache.get(message.channel.id), message.author, client, message);
 
+    // ! change this later it sucks and it is ugly
     const argSize = args.length;
-
     if (argSize === 1) {
       if (validType(args[0])) {
         game.gender = setType(args[0]);
